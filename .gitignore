@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+models/
+wheelhouse/
+.env
+student.json
+data/
+outputs/
+submissions/

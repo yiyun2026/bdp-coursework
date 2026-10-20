@@ -1,0 +1,21 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>学号 2410311308 · 实验/项目 01</title><style>body{margin:0;font:16px/1.6 sans-serif;background:#f4f6f8;color:#142235}header{position:sticky;top:0;background:#142e50;color:white;padding:18px 24px;overflow-wrap:anywhere;z-index:2}header strong{font-size:24px}header small{display:block}main{padding:20px 24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:20px;border:1px solid #cbd5e1}@media print{header{position:fixed;top:0}main{padding-top:100px}}</style><header><strong>学号 2410311308 · 实验/项目 01</strong><small>run_id: 04fb02440ed442548e39a590cf01df58 · 2026-10-20T02:32:17.435755+00:00 · hash-predictions</small></header><main><p>本页展示本次运行的原始记录。截图必须完整保留顶部学号、编号、run_id和相关结果。该标识用于证据关联；原创性还须结合代码差异和现场验收。</p><pre>{
+  &quot;kind&quot;: &quot;coursekit.run&quot;,
+  &quot;_evidence&quot;: {
+    &quot;schema_version&quot;: 1,
+    &quot;student_id&quot;: &quot;2410311308&quot;,
+    &quot;experiment_id&quot;: &quot;01&quot;,
+    &quot;run_id&quot;: &quot;04fb02440ed442548e39a590cf01df58&quot;,
+    &quot;captured_at&quot;: &quot;2026-10-20T02:32:17.435755+00:00&quot;,
+    &quot;stage&quot;: &quot;hash-predictions&quot;
+  },
+  &quot;result&quot;: null,
+  &quot;artifacts&quot;: [],
+  &quot;command&quot;: [
+    &quot;./.venv/Scripts/python.exe&quot;,
+    &quot;-c&quot;,
+    &quot;\nimport hashlib, json\nbase = json.dumps({&#x27;requests&#x27;: 3, &#x27;tokens&#x27;: 120}, sort_keys=True).encode(&#x27;utf-8&#x27;)\nk1 = &#x27;shared/raw/demo.json&#x27;\nk2 = &#x27;students/2410311308/raw/demo.json&#x27;\nprint(&#x27;P1 same bytes -&gt; two keys&#x27;)\nprint(&#x27;  key A:&#x27;, k1, hashlib.sha256(base).hexdigest())\nprint(&#x27;  key B:&#x27;, k2, hashlib.sha256(base).hexdigest())\nindented = json.dumps({&#x27;requests&#x27;: 3, &#x27;tokens&#x27;: 120}, sort_keys=True, indent=2).encode(&#x27;utf-8&#x27;)\nprint(&#x27;P2 indent only&#x27;)\nprint(&#x27;  compact sha256:&#x27;, hashlib.sha256(base).hexdigest())\nprint(&#x27;  indented sha256:&#x27;, hashlib.sha256(indented).hexdigest())\nprint(&#x27;  bytes equal:&#x27;, base == indented, &#x27;| parsed values equal:&#x27;, json.loads(base) == json.loads(indented))\nchanged = json.dumps({&#x27;requests&#x27;: 4, &#x27;tokens&#x27;: 120}, sort_keys=True).encode(&#x27;utf-8&#x27;)\nprint(&#x27;P3 one number changed 3-&gt;4&#x27;)\nprint(&#x27;  before sha256:&#x27;, hashlib.sha256(base).hexdigest())\nprint(&#x27;  after  sha256:&#x27;, hashlib.sha256(changed).hexdigest())\n&quot;
+  ],
+  &quot;exit_code&quot;: 0,
+  &quot;stdout&quot;: &quot;P1 same bytes -&gt; two keys\n  key A: shared/raw/demo.json 23c0b20c65b4476c7e541044c09c88cd970bb02191681f804daef0b7ba49f0e8\n  key B: students/2410311308/raw/demo.json 23c0b20c65b4476c7e541044c09c88cd970bb02191681f804daef0b7ba49f0e8\nP2 indent only\n  compact sha256: 23c0b20c65b4476c7e541044c09c88cd970bb02191681f804daef0b7ba49f0e8\n  indented sha256: de27ead625919c6ae952b29b5c2c14146e8302273ac9d149f591979bd9f9a195\n  bytes equal: False | parsed values equal: True\nP3 one number changed 3-&gt;4\n  before sha256: 23c0b20c65b4476c7e541044c09c88cd970bb02191681f804daef0b7ba49f0e8\n  after  sha256: 5657a58e4a955dcf741239aed81c7a600ca434c4b6c738557b8683d12b09d3f6\n&quot;,
+  &quot;stderr&quot;: &quot;&quot;
+}</pre></main></html>

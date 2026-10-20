@@ -1,0 +1,35 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "01",
+    "run_id": "8aad233e497a4e4bb76f1eae6e27d4a4",
+    "captured_at": "2026-10-20T02:36:19.665431+00:00",
+    "stage": "recovered"
+  },
+  "result": null,
+  "artifacts": [
+    {
+      "file": "outputs/lab01/storage.json",
+      "sha256": "37449e5af00ce3d7dda875f8b42930cbf65109eac008d57504b382aadadb3627",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "01",
+        "run_id": "8aad233e497a4e4bb76f1eae6e27d4a4",
+        "captured_at": "2026-10-20T02:36:19.665431+00:00",
+        "stage": "recovered"
+      }
+    }
+  ],
+  "command": [
+    "./.venv/Scripts/python.exe",
+    "-m",
+    "coursekit",
+    "lab01"
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"STUDENT_ID\": \"2410311308\",\n  \"EXPERIMENT_ID\": \"01\",\n  \"IDENTITY_CODE\": \"52bb38c8ccec\",\n  \"RUN_ID\": \"414b0d1a067e45debe8b92dd00a2ffcb\",\n  \"CAPTURED_AT\": \"2026-10-20T02:36:19.935218+00:00\",\n  \"_evidence\": {\n    \"schema_version\": 1,\n    \"student_id\": \"2410311308\",\n    \"experiment_id\": \"01\",\n    \"run_id\": \"414b0d1a067e45debe8b92dd00a2ffcb\",\n    \"captured_at\": \"2026-10-20T02:36:19.935218+00:00\",\n    \"stage\": \"verify\"\n  },\n  \"stage\": \"verify\",\n  \"result\": {\n    \"endpoint\": \"http://127.0.0.1:5838\",\n    \"backend\": \"Moto S3 API emulator; volatile memory, not durable cloud storage\",\n    \"bucket\": \"bdp-teaching\",\n    \"key\": \"bronze/events/0d93bcd25e28047f804238c220bdb5b1d2dadf328647c07de85ba0104e8e2854.jsonl\",\n    \"bytes\": 3892184,\n    \"source_sha256\": \"0d93bcd25e28047f804238c220bdb5b1d2dadf328647c07de85ba0104e8e2854\",\n    \"download_sha256\": \"0d93bcd25e28047f804238c220bdb5b1d2dadf328647c07de85ba0104e8e2854\",\n    \"hash_matches\": true,\n    \"version_ids_differ\": true\n  },\n  \"evidence_json\": \"E:\\\\Desktop\\\\云计算实验\\\\BDP\\\\outputs\\\\lab01\\\\evidence\\\\414b0d1a067e45debe8b92dd00a2ffcb-verify.json\",\n  \"evidence_html\": \"E:\\\\Desktop\\\\云计算实验\\\\BDP\\\\outputs\\\\lab01\\\\evidence\\\\414b0d1a067e45debe8b92dd00a2ffcb-verify.html\"\n}\n",
+  "stderr": "127.0.0.1 - - [20/Oct/2026 10:36:21] \"GET / HTTP/1.1\" 200 -\n127.0.0.1 - - [20/Oct/2026 10:36:21] \"PUT /bdp-teaching HTTP/1.1\" 200 -\n127.0.0.1 - - [20/Oct/2026 10:36:21] \"PUT /bdp-teaching?versioning HTTP/1.1\" 200 -\n127.0.0.1 - - [20/Oct/2026 10:36:21] \"PUT /bdp-teaching/bronze/events/0d93bcd25e28047f804238c220bdb5b1d2dadf328647c07de85ba0104e8e2854.jsonl HTTP/1.1\" 200 -\n127.0.0.1 - - [20/Oct/2026 10:36:21] \"PUT /bdp-teaching/bronze/events/0d93bcd25e28047f804238c220bdb5b1d2dadf328647c07de85ba0104e8e2854.jsonl HTTP/1.1\" 200 -\n127.0.0.1 - - [20/Oct/2026 10:36:21] \"HEAD /bdp-teaching/bronze/events/0d93bcd25e28047f804238c220bdb5b1d2dadf328647c07de85ba0104e8e2854.jsonl HTTP/1.1\" 200 -\n127.0.0.1 - - [20/Oct/2026 10:36:21] \"GET /bdp-teaching/bronze/events/0d93bcd25e28047f804238c220bdb5b1d2dadf328647c07de85ba0104e8e2854.jsonl HTTP/1.1\" 200 -\n"
+}
