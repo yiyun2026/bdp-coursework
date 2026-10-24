@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "01",
+    "run_id": "d13c3b0f0bee46df98bfad2fe0f47290",
+    "captured_at": "2026-10-24T12:44:29.622799+00:00",
+    "stage": "probe-02"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from pathlib import Path; p=Path('data/raw/events.jsonl'); print('lines=',sum(1 for _ in p.open(encoding='utf-8'))); print(p.open(encoding='utf-8').readline())"
+  ],
+  "exit_code": 0,
+  "stdout": "lines= 20102\n{\"event_id\": \"evt-00000000\", \"event_time\": \"2026-03-01T00:00:00+00:00\", \"service\": \"assistant\", \"model\": \"small\", \"input_tokens\": 1538, \"output_tokens\": 291, \"latency_ms\": 1083, \"status\": \"error\"}\n\n",
+  "stderr": ""
+}

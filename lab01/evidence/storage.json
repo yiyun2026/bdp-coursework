@@ -1,5 +1,5 @@
 {
-  "endpoint": "http://127.0.0.1:5838",
+  "endpoint": "http://127.0.0.1:7912",
   "backend": "Moto S3 API emulator; volatile memory, not durable cloud storage",
   "bucket": "bdp-teaching",
   "key": "bronze/events/0d93bcd25e28047f804238c220bdb5b1d2dadf328647c07de85ba0104e8e2854.jsonl",
@@ -12,8 +12,8 @@
     "schema_version": 1,
     "student_id": "2410311308",
     "experiment_id": "01",
-    "run_id": "414b0d1a067e45debe8b92dd00a2ffcb",
-    "captured_at": "2026-10-20T02:36:19.935218+00:00",
+    "run_id": "983c601db37545de84751d7edcf7f01e",
+    "captured_at": "2026-10-24T12:55:55.803952+00:00",
     "stage": "storage"
   }
 }

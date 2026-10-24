@@ -1,0 +1,15 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "01",
+    "run_id": "55265e5e4a3140aeb926e097a13c7d45",
+    "captured_at": "2026-10-24T12:34:04.288338+00:00",
+    "stage": "start"
+  },
+  "result": {
+    "identity_note": "本人学号仅用于证据关联；每张评分截图必须带学号，不能替代原创性验收。"
+  },
+  "artifacts": []
+}
