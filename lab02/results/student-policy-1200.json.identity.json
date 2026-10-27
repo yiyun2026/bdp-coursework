@@ -1,0 +1,12 @@
+{
+  "file": "outputs/lab02/student-policy-1200.json",
+  "sha256": "da23a28899f0dc6260fdc0ebd004cfdd21432ac1e3f1c0b664021c94b9491871",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "02",
+    "run_id": "fff6ed51e2454113b8efa0e80040d802",
+    "captured_at": "2026-10-27T03:09:23.034186+00:00",
+    "stage": "student_quality_policy"
+  }
+}

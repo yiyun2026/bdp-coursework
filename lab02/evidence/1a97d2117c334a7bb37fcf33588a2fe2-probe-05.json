@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "02",
+    "run_id": "1a97d2117c334a7bb37fcf33588a2fe2",
+    "captured_at": "2026-10-27T03:03:55.588158+00:00",
+    "stage": "probe-05"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.common import read_json,sha256; m=read_json('data/manifests/silver.json'); assert sha256('data/raw/events.jsonl')==m['source_sha256']; assert sha256('data/silver/events.parquet')==m['silver_sha256']; assert sha256('data/gold/service_daily.parquet')==m['gold_sha256']; print('manifest hashes match')"
+  ],
+  "exit_code": 0,
+  "stdout": "manifest hashes match\n",
+  "stderr": ""
+}

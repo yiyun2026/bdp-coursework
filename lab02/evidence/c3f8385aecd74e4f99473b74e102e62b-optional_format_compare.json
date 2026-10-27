@@ -1,0 +1,89 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "02",
+    "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+    "captured_at": "2026-10-27T03:23:38.069838+00:00",
+    "stage": "optional_format_compare"
+  },
+  "result": null,
+  "artifacts": [
+    {
+      "file": "outputs/lab02/compare/comparison.json",
+      "sha256": "b1f4072baa361c1a818335d61ffa78911af2c821ac3863262cfec1e77686459f",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "02",
+        "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+        "captured_at": "2026-10-27T03:23:38.069838+00:00",
+        "stage": "optional_format_compare"
+      }
+    },
+    {
+      "file": "outputs/lab02/compare/events.csv",
+      "sha256": "7cd55402c4a1a4cba5e4b07f38f4ad7ac0ca0bf9e289aa984bad78774bce75ce",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "02",
+        "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+        "captured_at": "2026-10-27T03:23:38.069838+00:00",
+        "stage": "optional_format_compare"
+      }
+    },
+    {
+      "file": "outputs/lab02/compare/events_uncompressed.parquet",
+      "sha256": "2112e33aa6ba9274523f07b5a4bce4a7733c7e0141b90348f9f1bbcd676849ba",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "02",
+        "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+        "captured_at": "2026-10-27T03:23:38.069838+00:00",
+        "stage": "optional_format_compare"
+      }
+    },
+    {
+      "file": "outputs/lab02/compare/events_zstd.parquet",
+      "sha256": "516b3d78aab91c1487d9a24979eaef514c5acb7309d0d82a6688a762836634dc",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "02",
+        "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+        "captured_at": "2026-10-27T03:23:38.069838+00:00",
+        "stage": "optional_format_compare"
+      }
+    },
+    {
+      "file": "outputs/lab02/compare/query-plan-uncompressed.txt",
+      "sha256": "2f5cae5a4e7ced3e80b5f72bdcc6c2f37943fc3a73da60dcb0b6128fbf59a387",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "02",
+        "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+        "captured_at": "2026-10-27T03:23:38.069838+00:00",
+        "stage": "optional_format_compare"
+      }
+    },
+    {
+      "file": "outputs/lab02/compare/query-plan-zstd.txt",
+      "sha256": "2f5cae5a4e7ced3e80b5f72bdcc6c2f37943fc3a73da60dcb0b6128fbf59a387",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "02",
+        "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+        "captured_at": "2026-10-27T03:23:38.069838+00:00",
+        "stage": "optional_format_compare"
+      }
+    }
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"source\": \"data/silver/events.parquet\",\n  \"rows\": 20000,\n  \"query\": \"按 service 分组统计 requests 与输入/输出 Token 总量\",\n  \"repeat\": 7,\n  \"warmup\": 3,\n  \"formats\": {\n    \"csv\": {\n      \"bytes\": 1612574,\n      \"size_ratio_vs_csv\": 1.0,\n      \"median_ms\": 92.643,\n      \"min_ms\": 84.789,\n      \"max_ms\": 95.12\n    },\n    \"parquet_uncompressed\": {\n      \"bytes\": 1250207,\n      \"size_ratio_vs_csv\": 0.7753,\n      \"median_ms\": 5.028,\n      \"min_ms\": 4.796,\n      \"max_ms\": 6.746\n    },\n    \"parquet_zstd\": {\n      \"bytes\": 224693,\n      \"size_ratio_vs_csv\": 0.1393,\n      \"median_ms\": 5.329,\n      \"min_ms\": 4.968,\n      \"max_ms\": 5.776\n    }\n  },\n  \"results_identical\": true,\n  \"timings\": {\n    \"csv\": {\n      \"median_ms\": 92.643,\n      \"min_ms\": 84.789,\n      \"max_ms\": 95.12\n    },\n    \"parquet_uncompressed\": {\n      \"median_ms\": 5.028,\n      \"min_ms\": 4.796,\n      \"max_ms\": 6.746\n    },\n    \"parquet_zstd\": {\n      \"median_ms\": 5.329,\n      \"min_ms\": 4.968,\n      \"max_ms\": 5.776\n    }\n  },\n  \"note\": \"同一进程、同一机器、同一查询；CSV 为 UTF-8 文本，Parquet 行组 4096。CSV 需要类型推断且无列裁剪，Parquet 带列统计与列式编码。\"\n}\n",
+  "stderr": ""
+}

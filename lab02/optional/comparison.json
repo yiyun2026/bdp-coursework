@@ -1,0 +1,57 @@
+{
+  "source": "data/silver/events.parquet",
+  "rows": 20000,
+  "query": "按 service 分组统计 requests 与输入/输出 Token 总量",
+  "repeat": 7,
+  "warmup": 3,
+  "formats": {
+    "csv": {
+      "bytes": 1612574,
+      "size_ratio_vs_csv": 1.0,
+      "median_ms": 92.643,
+      "min_ms": 84.789,
+      "max_ms": 95.12
+    },
+    "parquet_uncompressed": {
+      "bytes": 1250207,
+      "size_ratio_vs_csv": 0.7753,
+      "median_ms": 5.028,
+      "min_ms": 4.796,
+      "max_ms": 6.746
+    },
+    "parquet_zstd": {
+      "bytes": 224693,
+      "size_ratio_vs_csv": 0.1393,
+      "median_ms": 5.329,
+      "min_ms": 4.968,
+      "max_ms": 5.776
+    }
+  },
+  "results_identical": true,
+  "timings": {
+    "csv": {
+      "median_ms": 92.643,
+      "min_ms": 84.789,
+      "max_ms": 95.12
+    },
+    "parquet_uncompressed": {
+      "median_ms": 5.028,
+      "min_ms": 4.796,
+      "max_ms": 6.746
+    },
+    "parquet_zstd": {
+      "median_ms": 5.329,
+      "min_ms": 4.968,
+      "max_ms": 5.776
+    }
+  },
+  "note": "同一进程、同一机器、同一查询；CSV 为 UTF-8 文本，Parquet 行组 4096。CSV 需要类型推断且无列裁剪，Parquet 带列统计与列式编码。",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "02",
+    "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+    "captured_at": "2026-10-27T03:23:38.069838+00:00",
+    "stage": "comparison"
+  }
+}

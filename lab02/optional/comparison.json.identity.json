@@ -1,0 +1,12 @@
+{
+  "file": "outputs/lab02/compare/comparison.json",
+  "sha256": "b1f4072baa361c1a818335d61ffa78911af2c821ac3863262cfec1e77686459f",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "02",
+    "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+    "captured_at": "2026-10-27T03:23:38.069838+00:00",
+    "stage": "optional_format_compare"
+  }
+}

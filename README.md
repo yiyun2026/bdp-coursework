@@ -13,9 +13,60 @@ lab01/                                   实验 01 云端数据接口与可复�
 ├── code/                                个人修改后的脚本、原附件与 diff
 └── downloaded-events.jsonl              S3 往返下载副本
 
-2410311308_龚治榕_实验01云端数据接口与可复现环境.docx    实验报告 Word 版
-2410311308_龚治榕_实验01云端数据接口与可复现环境.pdf     实验报告 PDF 版
+lab02/                                   实验 02 数据湖与质量契约
+├── evidence/                            原生运行证据，JSON 与同名 HTML 成对，另含评分截图
+├── code/                                个人质量策略脚本、选做脚本、原附件
+├── results/                             quality.json、quarantine.json、查询计划、两种阈值结果
+└── optional/                            选做对比结果与查询计划
+
+2410311308_龚治榕_实验01云端数据接口与可复现环境.docx / .pdf    实验 01 报告
+2410311308_龚治榕_实验02数据湖与质量契约.docx / .pdf            实验 02 报告
 ```
+
+## 实验 02 摘要
+
+**数据来源**：复用实验 01 生成的 `data/raw/events.jsonl`，20,102 行，未重新生成。
+
+**基线质量**：原始 20,102 行 → 合法独特 20,000、重复 100、隔离 2，守恒 20,102。两条被隔离记录分别为第 20101 行 `bad-negative`（`input_tokens` 为 -1，原因 `invalid_input_tokens`）和第 20102 行 `bad-time`（`event_time` 为 `not-a-time`，原因 `invalid_event_time`）。
+
+**Parquet 与 SQL**：Silver 20,000 行、5 个行组、8 个字段；Gold 每日汇总 6 行。Silver 总量 (20000, 18015640, 6145862) 与 Gold 按 requests 求和完全一致，`totals_match` 为 true。
+
+**个人改动**：阈值 2000 → 1200。
+
+| 规则 | 原始 | 合法独特 | 重复 | 拒绝 | 输入 Token 总量 |
+|---|---:|---:|---:|---:|---:|
+| 基础课程契约 | 20102 | 20000 | 100 | 2 | 18015640 |
+| 附加上限 2000 | 20102 | 20000 | 100 | 2 | 18015640 |
+| 附加上限 1200 | 20102 | 13405 | 67 | 6630 | 8110488 |
+
+重复数由 100 降到 67，因为程序先校验再去重，被阈值拒绝的原始重复行进入了拒绝计数。
+
+**坏样本探针**：负数返回 `invalid_input_tokens`；布尔值 `True` 返回 `invalid_input_tokens`；无时区时间返回 `non_utc_time`；把布尔值换成字符串 `"100"` 后错误类型不变。
+
+**选做扩展**：同一份 Silver 数据比较三种存储格式，预热 3 次、测量 7 次取中位数。
+
+| 格式 | 字节数 | 相对 CSV | 中位耗时 |
+|---|---:|---:|---:|
+| CSV | 1,612,574 | 1.00 | 92.643 ms |
+| Parquet 未压缩 | 1,250,207 | 0.78 | 5.028 ms |
+| Parquet Zstd | 224,693 | 0.14 | 5.329 ms |
+
+三种格式聚合结果一致。Parquet 比 CSV 快约 18 倍，但未压缩与 Zstd 耗时几乎相同，说明加速主要来自列裁剪与类型已知，而非压缩；Zstd 把体积压到 14% 却没有带来速度提升。
+
+## 实验 02 运行证据索引
+
+| stage | run_id | 说明 |
+|---|---|---|
+| start | `cddfee846a1549db9abe3f1190d26d54` | 身份登记 |
+| verify | `a578991845f842d88e8895d2e2c2db92` | 主流水线清洗与聚合 |
+| probe-01 | `32a99557827a43d3927919b26ef2a504` | Parquet 结构与行组 |
+| inspect_gold | `affccbecbf5c411bb7e60715e35bec69` | Silver 与 Gold 总量核对 |
+| student_quality_policy | `4d92a580e80f43adb23a0303a7eb8303` | 阈值 2000 基线 |
+| student_quality_policy | `1d25cc5ea3234e53968ed3cfc5dd931b` | 阈值 1200 |
+| student_quality_policy | `fff6ed51e2454113b8efa0e80040d802` | 字符串探针 `"100"` |
+| probe-05 | `1a97d2117c334a7bb37fcf33588a2fe2` | 清单哈希核验 |
+| optional_format_compare | `c3f8385aecd74e4f99473b74e102e62b` | 选做三种格式对比 |
+| final | `07399fbd9f5542fe8b9bf22eb2b7ab2a` | 最终身份登记 |
 
 ## 实验 01 摘要
 

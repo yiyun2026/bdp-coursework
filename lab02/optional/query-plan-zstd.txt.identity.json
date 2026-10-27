@@ -1,0 +1,12 @@
+{
+  "file": "outputs/lab02/compare/query-plan-zstd.txt",
+  "sha256": "2f5cae5a4e7ced3e80b5f72bdcc6c2f37943fc3a73da60dcb0b6128fbf59a387",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "02",
+    "run_id": "c3f8385aecd74e4f99473b74e102e62b",
+    "captured_at": "2026-10-27T03:23:38.069838+00:00",
+    "stage": "optional_format_compare"
+  }
+}
