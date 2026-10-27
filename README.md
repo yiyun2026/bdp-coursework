@@ -7,21 +7,28 @@
 ## 目录结构
 
 ```
+2410311308_龚治榕_实验01云端数据接口与可复现环境.docx     实验 01 报告 Word 版
+2410311308_龚治榕_实验01云端数据接口与可复现环境.pdf      实验 01 报告 PDF 版
+2410311308_龚治榕_实验02数据湖与质量契约.docx             实验 02 报告 Word 版
+2410311308_龚治榕_实验02数据湖与质量契约.pdf              实验 02 报告 PDF 版
+
 lab01/                                   实验 01 云端数据接口与可复现环境
-├── evidence/                            原生运行证据，JSON 与同名 HTML 成对
-├── screenshots/                         截图，evidence- 为浏览器证据页，step- 为命令行过程
-├── code/                                个人修改后的脚本、原附件与 diff
+├── evidence/                            coursekit.run 的 JSON 与同名 HTML 成对；
+│                                        另含 evidence-01..09 共 9 张浏览器证据页评分截图
+├── screenshots/                         step-01..13 共 13 张命令行过程截图
+├── code/                                个人修改后的脚本、原附件与 make_key.diff
 └── downloaded-events.jsonl              S3 往返下载副本
 
 lab02/                                   实验 02 数据湖与质量契约
-├── evidence/                            原生运行证据，JSON 与同名 HTML 成对，另含评分截图
-├── code/                                个人质量策略脚本、选做脚本、原附件
-├── results/                             quality.json、quarantine.json、查询计划、两种阈值结果
-└── optional/                            选做对比结果与查询计划
-
-2410311308_龚治榕_实验01云端数据接口与可复现环境.docx / .pdf    实验 01 报告
-2410311308_龚治榕_实验02数据湖与质量契约.docx / .pdf            实验 02 报告
+├── evidence/                            coursekit.run 的 JSON 与同名 HTML 成对；
+│                                        另含 evidence-01..12 共 12 张评分截图
+├── code/                                student_quality_policy.py、optional_format_compare.py、原附件
+├── results/                             quality.json、quarantine.json、query-plan.txt、
+│                                        student-policy-2000.json、student-policy-1200.json 及 identity 旁证
+└── optional/                            选做的 comparison.json 与两份查询计划
 ```
+
+评分截图（`evidence-*.png`）统一放在各实验的 `evidence/` 下，命令行过程截图（`step-*.png`）统一放在 `screenshots/` 下。
 
 ## 实验 02 摘要
 
@@ -62,7 +69,8 @@ lab02/                                   实验 02 数据湖与质量契约
 | probe-01 | `32a99557827a43d3927919b26ef2a504` | Parquet 结构与行组 |
 | inspect_gold | `affccbecbf5c411bb7e60715e35bec69` | Silver 与 Gold 总量核对 |
 | student_quality_policy | `4d92a580e80f43adb23a0303a7eb8303` | 阈值 2000 基线 |
-| student_quality_policy | `1d25cc5ea3234e53968ed3cfc5dd931b` | 阈值 1200 |
+| student_quality_policy | `98b0ab07a2cf44b48aa9d7e050eb220f` | 阈值 1200（首次运行，后被覆盖结果相同） |
+| student_quality_policy | `1d25cc5ea3234e53968ed3cfc5dd931b` | 阈值 1200（正式留存） |
 | student_quality_policy | `fff6ed51e2454113b8efa0e80040d802` | 字符串探针 `"100"` |
 | probe-05 | `1a97d2117c334a7bb37fcf33588a2fe2` | 清单哈希核验 |
 | optional_format_compare | `c3f8385aecd74e4f99473b74e102e62b` | 选做三种格式对比 |
