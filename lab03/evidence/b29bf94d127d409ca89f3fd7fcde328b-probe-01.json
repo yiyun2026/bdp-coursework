@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "03",
+    "run_id": "b29bf94d127d409ca89f3fd7fcde328b",
+    "captured_at": "2026-11-10T03:38:08.019357+00:00",
+    "stage": "probe-01"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.common import read_json,sha256; m=read_json('data/manifests/silver.json'); assert m['silver_sha256']==sha256('data/silver/events.parquet'); print('rows=',m['rows']); print('silver hash verified')"
+  ],
+  "exit_code": 0,
+  "stdout": "rows= 20000\nsilver hash verified\n",
+  "stderr": ""
+}

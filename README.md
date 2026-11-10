@@ -26,6 +26,15 @@ lab02/                                   实验 02 数据湖与质量契约
 ├── results/                             quality.json、quarantine.json、query-plan.txt、
 │                                        student-policy-2000.json、student-policy-1200.json 及 identity 旁证
 └── optional/                            选做的 comparison.json 与两份查询计划
+
+lab03/                                   实验 03 分布式批处理与性能分析
+├── evidence/                            coursekit.run 的 JSON 与同名 HTML 成对；
+│                                        另含 evidence-01..11 共 12 张评分截图
+├── code/                                student_latency_aggregate.py、latency_errors.diff、
+│                                        optional_shuffle_compare.py、原附件与核验器
+├── results/                             三份 benchmark-*.json、student-latency-1000/2000.json、
+│                                        optional-shuffle-compare.json 及 identity 旁证
+└── screenshots/                         step-01..20 共 20 张命令行过程截图
 ```
 
 评分截图（`evidence-*.png`）统一放在各实验的 `evidence/` 下，命令行过程截图（`step-*.png`）统一放在 `screenshots/` 下。
@@ -59,6 +68,61 @@ lab02/                                   实验 02 数据湖与质量契约
 | Parquet Zstd | 224,693 | 0.14 | 5.329 ms |
 
 三种格式聚合结果一致。Parquet 比 CSV 快约 18 倍，但未压缩与 Zstd 耗时几乎相同，说明加速主要来自列裁剪与类型已知，而非压缩；Zstd 把体积压到 14% 却没有带来速度提升。
+
+## 实验 03 摘要
+
+**输入继承**：复用实验 02 的 `data/silver/events.parquet`，20,000 行，SHA-256 `516b3d78aab91c1487d9a24979eaef514c5acb7309d0d82a6688a762836634dc`，与清单一致。
+
+**三配置受控对照**（数据、聚合口径完全相同，只改 Worker 数与分区数）：
+
+| 配置 | 不同 PID | 任务数 | 启动秒 | 主计算秒 | 总秒 | SQL 一致 |
+|---|---:|---:|---:|---:|---:|---|
+| w1p8 | 1 | 115 | 1.053 | 1.535 | 3.209 | true |
+| w2p8 | 2 | 115 | 1.058 | 2.353 | 3.924 | true |
+| w2p4 | 2 | 43 | 1.067 | 2.277 | 3.773 | true |
+
+两 Worker 主计算 2.353 秒反而比一 Worker 的 1.535 秒慢，加速比 0.65。原因是 20,000 条数据量下进程启动、序列化与调度开销占主导。
+
+**分区倾斜**：`partition_rows_after_shuffle` 为 `[2023, 0, 14008, 3969, 0, 0, 0, 0]`，非空分区仅 3 个，最大分区 14008 行，与「只有三个服务键」一致；增加分区数只会增加空分区。
+
+**个人改动**：慢请求阈值 1000 → 2000，`slow_requests` 由 10589/1519/3043 降至 7120/1011/2041，请求数与延迟总和不变。补全 `errors` 与 `error_rate` 四处逻辑后，核验器输出 `ERROR_EXTENSION_PASS {'total_errors': 800}`。
+
+| 服务 | requests | errors | error_rate | slow_requests(2000) | slow_rate |
+|---|---:|---:|---:|---:|---:|
+| assistant | 14008 | 543 | 0.038764 | 7120 | 0.508281 |
+| batch | 2023 | 78 | 0.038557 | 1011 | 0.499753 |
+| search | 3969 | 179 | 0.045100 | 2041 | 0.514235 |
+
+**手算核对**：assistant 平均延迟 28448309 / 14008 = 2030.861579 ms，慢请求率 7120 / 14008 = 0.508281，错误率 543 / 14008 = 0.038764，三项均与 JSON 一致。
+
+**选做：显式 Shuffle 与可合并聚合**
+
+| 指标 | 显式 Shuffle | 不 Shuffle |
+|---|---:|---:|
+| 任务数 | 115 | 19 |
+| 非空分区 | 3 | 8 |
+| 分区行数 | [2023,0,14008,3969,0,0,0,0] | [2500 × 8] |
+| 主计算秒 | 2.5053 | 2.5343 |
+| 结果一致 | true | true |
+
+任务数相差约 6 倍，耗时只差约 1%。说明任务数不是性能指标本身；显式 Shuffle 得到的是「按键分区」，不 Shuffle 得到的是「按行均分」，后者看着均匀但每个分区混着三种服务。
+
+## 实验 03 运行证据索引
+
+| stage | run_id | 说明 |
+|---|---|---|
+| start | `f9968f40d31e4b788197b0da3edf76cb` | 身份登记 |
+| probe-01 | `b29bf94d127d409ca89f3fd7fcde328b` | Silver 行数与哈希核验 |
+| verify | `7ddeafe4dda0443bbe57dfc7d3fbabf3` | w1 p8 基准 |
+| verify | `ef47743bd27f47cba531e902e4eafbe0` | w2 p8 基准 |
+| verify | `c683aa0aa0a64ee382b057c8f9cbf4ae` | w2 p4 基准 |
+| probe-02 | `4dea1306dde94d0eafb39e6374289af5` | 分区倾斜 |
+| student_latency | `5f70c35b5e3a430992936f9f83156b52` | 阈值 1000 |
+| student_latency | `d48e680043554ab7b8c6e8d5f52e1fae` | 阈值 2000 |
+| check_error_extension | `8b580a0ca9ed45a982b8b5b6ed1206b3` | 错误统计专项核验 |
+| expected-failure | `7aa7a37e1f014c04b07fde7ef3efcd7e` | workers=0 配置拒绝 |
+| optional_shuffle_compare | `63b3cb6fae2e44d1a02ab98930664183` | 选做 Shuffle 对比 |
+| final | `dcbcd08e325549afb0ea45f7eddd3c61` | 最终身份登记 |
 
 ## 实验 02 运行证据索引
 

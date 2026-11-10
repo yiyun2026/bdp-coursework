@@ -1,0 +1,26 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "03",
+    "run_id": "7aa7a37e1f014c04b07fde7ef3efcd7e",
+    "captured_at": "2026-11-10T04:18:47.409660+00:00",
+    "stage": "expected-failure"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-m",
+    "coursekit",
+    "lab03",
+    "--workers",
+    "0",
+    "--partitions",
+    "8"
+  ],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "{\n  \"passed\": false,\n  \"error\": \"ValueError: Teaching limits: 1-4 workers, 1-64 partitions.\",\n  \"_evidence\": {\n    \"schema_version\": 1,\n    \"student_id\": \"2410311308\",\n    \"experiment_id\": \"03\",\n    \"run_id\": \"4c85e480270b4decb7b990b9844f81ae\",\n    \"captured_at\": \"2026-11-10T04:18:47.559118+00:00\",\n    \"stage\": \"failed-lab03\"\n  },\n  \"evidence_json\": \"E:\\\\Desktop\\\\2410311308_龚治榕_云计算实验\\\\BDP\\\\outputs\\\\lab03\\\\evidence\\\\4c85e480270b4decb7b990b9844f81ae-failed-lab03.json\",\n  \"evidence_html\": \"E:\\\\Desktop\\\\2410311308_龚治榕_云计算实验\\\\BDP\\\\outputs\\\\lab03\\\\evidence\\\\4c85e480270b4decb7b990b9844f81ae-failed-lab03.html\"\n}\n"
+}

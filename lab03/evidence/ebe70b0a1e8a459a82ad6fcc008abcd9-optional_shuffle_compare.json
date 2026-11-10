@@ -1,0 +1,29 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "03",
+    "run_id": "ebe70b0a1e8a459a82ad6fcc008abcd9",
+    "captured_at": "2026-11-10T04:38:48.262495+00:00",
+    "stage": "optional_shuffle_compare"
+  },
+  "result": null,
+  "artifacts": [
+    {
+      "file": "outputs/lab03/optional-shuffle-compare.json",
+      "sha256": "1dcee4f2325cf6354411fab03fc0645dd0767b96f7b13cbac2167318a96c6358",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "03",
+        "run_id": "ebe70b0a1e8a459a82ad6fcc008abcd9",
+        "captured_at": "2026-11-10T04:38:48.262495+00:00",
+        "stage": "optional_shuffle_compare"
+      }
+    }
+  ],
+  "exit_code": 0,
+  "stdout": "{\n  \"source\": \"data/silver/events.parquet\",\n  \"rows\": 20000,\n  \"silver_sha256\": \"516b3d78aab91c1487d9a24979eaef514c5acb7309d0d82a6688a762836634dc\",\n  \"workers\": 2,\n  \"partitions\": 8,\n  \"configs\": {\n    \"explicit_shuffle\": {\n      \"mode\": \"explicit_shuffle\",\n      \"workers\": 2,\n      \"partitions\": 8,\n      \"worker_pids\": {\n        \"tcp://127.0.0.1:13065\": 4640,\n        \"tcp://127.0.0.1:13068\": 17272\n      },\n      \"distinct_pids\": 2,\n      \"task_count\": 115,\n      \"partition_rows\": [\n        2023,\n        0,\n        14008,\n        3969,\n        0,\n        0,\n        0,\n        0\n      ],\n      \"nonempty_partitions\": 3,\n      \"max_partition_rows\": 14008,\n      \"startup_seconds\": 1.2964,\n      \"compute_seconds\": 2.5951,\n      \"total_seconds\": 4.5099,\n      \"matches_duckdb\": false,\n      \"aggregate\": [\n        {\n          \"service\": \"assistant\",\n          \"requests\": 14008,\n          \"input_tokens\": 12631850,\n          \"output_tokens\": 4310029,\n          \"latency_ms_sum\": 28448309\n        },\n        {\n          \"service\": \"batch\",\n          \"requests\": 2023,\n          \"input_tokens\": 1816567,\n          \"output_tokens\": 616515,\n          \"latency_ms_sum\": 4079006\n        },\n        {\n          \"service\": \"search\",\n          \"requests\": 3969,\n          \"input_tokens\": 3567223,\n          \"output_tokens\": 1219318,\n          \"latency_ms_sum\": 8137035\n        }\n      ]\n    },\n    \"no_shuffle\": {\n      \"mode\": \"no_shuffle\",\n      \"workers\": 2,\n      \"partitions\": 8,\n      \"worker_pids\": {\n        \"tcp://127.0.0.1:13093\": 25928,\n        \"tcp://127.0.0.1:13096\": 13440\n      },\n      \"distinct_pids\": 2,\n      \"task_count\": 19,\n      \"partition_rows\": [\n        2500,\n        2500,\n        2500,\n        2500,\n        2500,\n        2500,\n        2500,\n        2500\n      ],\n      \"nonempty_partitions\": 8,\n      \"max_partition_rows\": 2500,\n      \"startup_seconds\": 1.2788,\n      \"compute_seconds\": 2.4481,\n      \"total_seconds\": 4.1192,\n      \"matches_duckdb\": false,\n      \"aggregate\": [\n        {\n          \"service\": \"assistant\",\n          \"requests\": 14008,\n          \"input_tokens\": 12631850,\n          \"output_tokens\": 4310029,\n          \"latency_ms_sum\": 28448309\n        },\n        {\n          \"service\": \"batch\",\n          \"requests\": 2023,\n          \"input_tokens\": 1816567,\n          \"output_tokens\": 616515,\n          \"latency_ms_sum\": 4079006\n        },\n        {\n          \"service\": \"search\",\n          \"requests\": 3969,\n          \"input_tokens\": 3567223,\n          \"output_tokens\": 1219318,\n          \"latency_ms_sum\": 8137035\n        }\n      ]\n    }\n  },\n  \"comparison\": {\n    \"task_count\": {\n      \"explicit_shuffle\": 115,\n      \"no_shuffle\": 19\n    },\n    \"compute_seconds\": {\n      \"explicit_shuffle\": 2.5951,\n      \"no_shuffle\": 2.4481\n    },\n    \"nonempty_partitions\": {\n      \"explicit_shuffle\": 3,\n      \"no_shuffle\": 8\n    }\n  },\n  \"note\": \"两种配置数据、Worker 数、分区数、聚合口径完全相同，只改变是否显式按 service 交换。显式 Shuffle 的分区行数反映交换后的分布，no_shuffle 反映原始分区分布；两者分组结果都必须与 DuckDB 一致。\",\n  \"_evidence\": {\n    \"schema_version\": 1,\n    \"student_id\": \"2410311308\",\n    \"experiment_id\": \"03\",\n    \"run_id\": \"ebe70b0a1e8a459a82ad6fcc008abcd9\",\n    \"captured_at\": \"2026-11-10T04:38:48.262495+00:00\",\n    \"stage\": \"optional-shuffle-compare\"\n  }\n}\n",
+  "stderr": ""
+}

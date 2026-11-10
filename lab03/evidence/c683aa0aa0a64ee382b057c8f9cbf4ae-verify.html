@@ -1,0 +1,83 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>学号 2410311308 · 实验/项目 03</title><style>body{margin:0;font:16px/1.6 sans-serif;background:#f4f6f8;color:#142235}header{position:sticky;top:0;background:#142e50;color:white;padding:18px 24px;overflow-wrap:anywhere;z-index:2}header strong{font-size:24px}header small{display:block}main{padding:20px 24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:20px;border:1px solid #cbd5e1}@media print{header{position:fixed;top:0}main{padding-top:100px}}</style><header><strong>学号 2410311308 · 实验/项目 03</strong><small>run_id: c683aa0aa0a64ee382b057c8f9cbf4ae · 2026-11-10T03:55:54.229516+00:00 · verify</small></header><main><p>本页展示本次运行的原始记录。截图必须完整保留顶部学号、编号、run_id和相关结果。该标识用于证据关联；原创性还须结合代码差异和现场验收。</p><pre>{
+  &quot;kind&quot;: &quot;coursekit.run&quot;,
+  &quot;_evidence&quot;: {
+    &quot;schema_version&quot;: 1,
+    &quot;student_id&quot;: &quot;2410311308&quot;,
+    &quot;experiment_id&quot;: &quot;03&quot;,
+    &quot;run_id&quot;: &quot;c683aa0aa0a64ee382b057c8f9cbf4ae&quot;,
+    &quot;captured_at&quot;: &quot;2026-11-10T03:55:54.229516+00:00&quot;,
+    &quot;stage&quot;: &quot;verify&quot;
+  },
+  &quot;result&quot;: {
+    &quot;workers&quot;: 2,
+    &quot;partitions&quot;: 4,
+    &quot;worker_pids&quot;: {
+      &quot;tcp://127.0.0.1:12038&quot;: 13968,
+      &quot;tcp://127.0.0.1:12041&quot;: 21000
+    },
+    &quot;scheduler_workers&quot;: 2,
+    &quot;task_count&quot;: 43,
+    &quot;partition_rows_after_shuffle&quot;: [
+      2023,
+      0,
+      14008,
+      3969
+    ],
+    &quot;matches_duckdb&quot;: true,
+    &quot;duckdb_seconds&quot;: 0.02346920000127284,
+    &quot;startup_seconds&quot;: 1.0672565999993822,
+    &quot;compute_seconds&quot;: 2.2771073000003526,
+    &quot;total_seconds&quot;: 3.7731803999995464,
+    &quot;silver_sha256&quot;: &quot;516b3d78aab91c1487d9a24979eaef514c5acb7309d0d82a6688a762836634dc&quot;,
+    &quot;aggregate&quot;: [
+      {
+        &quot;service&quot;: &quot;assistant&quot;,
+        &quot;requests&quot;: 14008,
+        &quot;input_tokens&quot;: 12631850,
+        &quot;output_tokens&quot;: 4310029,
+        &quot;latency_ms_sum&quot;: 28448309
+      },
+      {
+        &quot;service&quot;: &quot;batch&quot;,
+        &quot;requests&quot;: 2023,
+        &quot;input_tokens&quot;: 1816567,
+        &quot;output_tokens&quot;: 616515,
+        &quot;latency_ms_sum&quot;: 4079006
+      },
+      {
+        &quot;service&quot;: &quot;search&quot;,
+        &quot;requests&quot;: 3969,
+        &quot;input_tokens&quot;: 3567223,
+        &quot;output_tokens&quot;: 1219318,
+        &quot;latency_ms_sum&quot;: 8137035
+      }
+    ],
+    &quot;timing_note&quot;: &quot;total includes separate partition diagnostics; do not claim linear speedup&quot;
+  },
+  &quot;artifacts&quot;: [
+    {
+      &quot;file&quot;: &quot;outputs/lab03/benchmark-w2-p4.json&quot;,
+      &quot;sha256&quot;: &quot;f957c5afffcafa15a842ffa5e3f6829dc772db9ab48e11e03a4f1ffd9a5ce057&quot;,
+      &quot;_evidence&quot;: {
+        &quot;schema_version&quot;: 1,
+        &quot;student_id&quot;: &quot;2410311308&quot;,
+        &quot;experiment_id&quot;: &quot;03&quot;,
+        &quot;run_id&quot;: &quot;c683aa0aa0a64ee382b057c8f9cbf4ae&quot;,
+        &quot;captured_at&quot;: &quot;2026-11-10T03:55:54.229516+00:00&quot;,
+        &quot;stage&quot;: &quot;benchmark-w2-p4&quot;
+      }
+    },
+    {
+      &quot;file&quot;: &quot;outputs/lab03/benchmark.json&quot;,
+      &quot;sha256&quot;: &quot;fe7de3da4b0ec5d9563ab1134550adcdca619e8d6802d9492475d4ac4829ef0b&quot;,
+      &quot;_evidence&quot;: {
+        &quot;schema_version&quot;: 1,
+        &quot;student_id&quot;: &quot;2410311308&quot;,
+        &quot;experiment_id&quot;: &quot;03&quot;,
+        &quot;run_id&quot;: &quot;c683aa0aa0a64ee382b057c8f9cbf4ae&quot;,
+        &quot;captured_at&quot;: &quot;2026-11-10T03:55:54.229516+00:00&quot;,
+        &quot;stage&quot;: &quot;benchmark&quot;
+      }
+    }
+  ]
+}</pre></main></html>

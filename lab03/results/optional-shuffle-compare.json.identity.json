@@ -1,0 +1,12 @@
+{
+  "file": "outputs/lab03/optional-shuffle-compare.json",
+  "sha256": "f90f7e28afa176d397338d331e84828df81cf57ea2845605977417119e196c4d",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "03",
+    "run_id": "63b3cb6fae2e44d1a02ab98930664183",
+    "captured_at": "2026-11-10T04:39:39.291710+00:00",
+    "stage": "optional_shuffle_compare"
+  }
+}

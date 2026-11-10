@@ -1,0 +1,132 @@
+{
+  "source": "data/silver/events.parquet",
+  "rows": 20000,
+  "silver_sha256": "516b3d78aab91c1487d9a24979eaef514c5acb7309d0d82a6688a762836634dc",
+  "workers": 2,
+  "partitions": 8,
+  "configs": {
+    "explicit_shuffle": {
+      "mode": "explicit_shuffle",
+      "workers": 2,
+      "partitions": 8,
+      "worker_pids": {
+        "tcp://127.0.0.1:1029": 12348,
+        "tcp://127.0.0.1:1032": 11044
+      },
+      "distinct_pids": 2,
+      "task_count": 115,
+      "partition_rows": [
+        2023,
+        0,
+        14008,
+        3969,
+        0,
+        0,
+        0,
+        0
+      ],
+      "nonempty_partitions": 3,
+      "max_partition_rows": 14008,
+      "startup_seconds": 1.1832,
+      "compute_seconds": 2.5053,
+      "total_seconds": 4.3518,
+      "matches_duckdb": true,
+      "aggregate": [
+        {
+          "service": "assistant",
+          "requests": 14008,
+          "input_tokens": 12631850,
+          "output_tokens": 4310029,
+          "latency_ms_sum": 28448309
+        },
+        {
+          "service": "batch",
+          "requests": 2023,
+          "input_tokens": 1816567,
+          "output_tokens": 616515,
+          "latency_ms_sum": 4079006
+        },
+        {
+          "service": "search",
+          "requests": 3969,
+          "input_tokens": 3567223,
+          "output_tokens": 1219318,
+          "latency_ms_sum": 8137035
+        }
+      ]
+    },
+    "no_shuffle": {
+      "mode": "no_shuffle",
+      "workers": 2,
+      "partitions": 8,
+      "worker_pids": {
+        "tcp://127.0.0.1:1057": 9584,
+        "tcp://127.0.0.1:1060": 27000
+      },
+      "distinct_pids": 2,
+      "task_count": 19,
+      "partition_rows": [
+        2500,
+        2500,
+        2500,
+        2500,
+        2500,
+        2500,
+        2500,
+        2500
+      ],
+      "nonempty_partitions": 8,
+      "max_partition_rows": 2500,
+      "startup_seconds": 1.2599,
+      "compute_seconds": 2.5343,
+      "total_seconds": 4.1827,
+      "matches_duckdb": true,
+      "aggregate": [
+        {
+          "service": "assistant",
+          "requests": 14008,
+          "input_tokens": 12631850,
+          "output_tokens": 4310029,
+          "latency_ms_sum": 28448309
+        },
+        {
+          "service": "batch",
+          "requests": 2023,
+          "input_tokens": 1816567,
+          "output_tokens": 616515,
+          "latency_ms_sum": 4079006
+        },
+        {
+          "service": "search",
+          "requests": 3969,
+          "input_tokens": 3567223,
+          "output_tokens": 1219318,
+          "latency_ms_sum": 8137035
+        }
+      ]
+    }
+  },
+  "comparison": {
+    "task_count": {
+      "explicit_shuffle": 115,
+      "no_shuffle": 19
+    },
+    "compute_seconds": {
+      "explicit_shuffle": 2.5053,
+      "no_shuffle": 2.5343
+    },
+    "nonempty_partitions": {
+      "explicit_shuffle": 3,
+      "no_shuffle": 8
+    }
+  },
+  "note": "两种配置数据、Worker 数、分区数、聚合口径完全相同，只改变是否显式按 service 交换。显式 Shuffle 的分区行数反映交换后的分布，no_shuffle 反映原始分区分布；两者分组结果都必须与 DuckDB 一致。",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "03",
+    "run_id": "63b3cb6fae2e44d1a02ab98930664183",
+    "captured_at": "2026-11-10T04:39:39.291710+00:00",
+    "stage": "optional-shuffle-compare"
+  }
+}

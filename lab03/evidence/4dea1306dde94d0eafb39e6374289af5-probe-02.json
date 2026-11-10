@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "03",
+    "run_id": "4dea1306dde94d0eafb39e6374289af5",
+    "captured_at": "2026-11-10T03:58:55.267942+00:00",
+    "stage": "probe-02"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.common import read_json; r=read_json('outputs/lab03/benchmark-w2-p8.json'); n=r['partition_rows_after_shuffle']; print('partition_rows=',n); print('sum=',sum(n),'nonempty=',sum(x>0 for x in n),'max=',max(n))"
+  ],
+  "exit_code": 0,
+  "stdout": "partition_rows= [2023, 0, 14008, 3969, 0, 0, 0, 0]\nsum= 20000 nonempty= 3 max= 14008\n",
+  "stderr": ""
+}
