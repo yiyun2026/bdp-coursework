@@ -1,0 +1,144 @@
+{
+  "database": "E:\\Desktop\\2410311308_龚治榕_云计算实验\\BDP\\data\\state\\runs\\c22a69acc29a\\events.sqlite",
+  "run_id": "c22a69acc29a",
+  "total_rows": 20002,
+  "checkpoint": 20002,
+  "late_event": {
+    "event_id": "increment-late",
+    "event_time": "2026-02-28T23:59:00+00:00",
+    "service": "assistant",
+    "input_tokens": 1538,
+    "output_tokens": 291,
+    "arrival": "本次处理的最后才到达，但事件时间早于绝大多数已有记录"
+  },
+  "total_requests_before_late": 20001,
+  "total_requests_after_late": 20002,
+  "changed_groups": [
+    {
+      "key": "2026-02-28|assistant",
+      "before": null,
+      "after": {
+        "day": "2026-02-28",
+        "service": "assistant",
+        "requests": 1,
+        "input_tokens": 1538,
+        "output_tokens": 291
+      },
+      "delta_requests": 1,
+      "delta_input_tokens": 1538,
+      "delta_output_tokens": 291
+    }
+  ],
+  "cache_keys_to_invalidate": [
+    "2026-02-28|assistant"
+  ],
+  "daily_before": [
+    {
+      "day": "2026-03-01",
+      "service": "assistant",
+      "requests": 12142,
+      "input_tokens": 10943399,
+      "output_tokens": 3743595
+    },
+    {
+      "day": "2026-03-01",
+      "service": "batch",
+      "requests": 1722,
+      "input_tokens": 1542888,
+      "output_tokens": 526892
+    },
+    {
+      "day": "2026-03-01",
+      "service": "search",
+      "requests": 3416,
+      "input_tokens": 3066824,
+      "output_tokens": 1043954
+    },
+    {
+      "day": "2026-03-02",
+      "service": "assistant",
+      "requests": 1866,
+      "input_tokens": 1688451,
+      "output_tokens": 566434
+    },
+    {
+      "day": "2026-03-02",
+      "service": "batch",
+      "requests": 301,
+      "input_tokens": 273679,
+      "output_tokens": 89623
+    },
+    {
+      "day": "2026-03-02",
+      "service": "search",
+      "requests": 554,
+      "input_tokens": 502168,
+      "output_tokens": 175760
+    }
+  ],
+  "daily_after": [
+    {
+      "day": "2026-02-28",
+      "service": "assistant",
+      "requests": 1,
+      "input_tokens": 1538,
+      "output_tokens": 291
+    },
+    {
+      "day": "2026-03-01",
+      "service": "assistant",
+      "requests": 12142,
+      "input_tokens": 10943399,
+      "output_tokens": 3743595
+    },
+    {
+      "day": "2026-03-01",
+      "service": "batch",
+      "requests": 1722,
+      "input_tokens": 1542888,
+      "output_tokens": 526892
+    },
+    {
+      "day": "2026-03-01",
+      "service": "search",
+      "requests": 3416,
+      "input_tokens": 3066824,
+      "output_tokens": 1043954
+    },
+    {
+      "day": "2026-03-02",
+      "service": "assistant",
+      "requests": 1866,
+      "input_tokens": 1688451,
+      "output_tokens": 566434
+    },
+    {
+      "day": "2026-03-02",
+      "service": "batch",
+      "requests": 301,
+      "input_tokens": 273679,
+      "output_tokens": 89623
+    },
+    {
+      "day": "2026-03-02",
+      "service": "search",
+      "requests": 554,
+      "input_tokens": 502168,
+      "output_tokens": 175760
+    }
+  ],
+  "conclusion": {
+    "rewritten_day": "2026-02-28",
+    "rewritten_service": "assistant",
+    "explanation": "晚到事件的事件时间为 2026-02-28，早于主数据的 2026-03-01 与 2026-03-02，因此它改写的是按日汇总中一个此前不存在的新日期，而不是已有日期的计数。全历史按服务汇总看不出这一点，只有按日分组后才能定位。"
+  },
+  "note": "本脚本只读打开数据库，不写入任何状态；晚到事件已由主实验接受并入库，这里做的是按日重算与缓存失效分析。本章未实现 watermark。",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "04",
+    "run_id": "1a41c52df1a54b0ea24341d148b58787",
+    "captured_at": "2026-11-22T01:41:00.028601+00:00",
+    "stage": "optional-daily-recompute"
+  }
+}

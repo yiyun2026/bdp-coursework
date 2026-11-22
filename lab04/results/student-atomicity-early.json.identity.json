@@ -1,0 +1,12 @@
+{
+  "file": "outputs/lab04/student-atomicity-early.json",
+  "sha256": "bec0d5cad433d37abc6b1099ce0d6fbcc72721ab8208e1edaf5573aaa2390f85",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "04",
+    "run_id": "c71769aa4ec24dfe894ab4adce69a536",
+    "captured_at": "2026-11-22T01:11:48.226783+00:00",
+    "stage": "student_atomicity"
+  }
+}

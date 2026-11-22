@@ -1,0 +1,16 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "04",
+    "run_id": "ed008f5404524d2295ac289a78d4f65e",
+    "captured_at": "2026-11-22T01:40:50.977179+00:00",
+    "stage": "optional_daily_recompute"
+  },
+  "result": null,
+  "artifacts": [],
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"E:\\Desktop\\2410311308_龚治榕_云计算实验\\BDP\\coursekit\\evidence.py\", line 39, in capture_callable\n    operation()\n  File \"E:\\Desktop\\2410311308_龚治榕_云计算实验\\BDP\\submissions\\lab04\\optional_daily_recompute.py\", line 104, in main\n    \"rewritten_day\": changed[0][\"day\"] if changed else None,\n                     ~~~~~~~~~~^^^^^^^\nKeyError: 'day'\n"
+}

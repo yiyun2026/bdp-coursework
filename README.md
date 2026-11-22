@@ -35,6 +35,16 @@ lab03/                                   实验 03 分布式批处理与性能�
 ├── results/                             三份 benchmark-*.json、student-latency-1000/2000.json、
 │                                        optional-shuffle-compare.json 及 identity 旁证
 └── screenshots/                         step-01..20 共 20 张命令行过程截图
+
+lab04/                                   实验 04 增量事件处理与故障恢复
+├── evidence/                            coursekit.run 的 JSON 与同名 HTML 成对；
+│                                        另含 evidence-01..12 共 12 张评分截图
+├── code/                                student_atomicity.py、atomicity.diff、
+│                                        optional_daily_recompute.py、原附件
+├── results/                             replay.json、latest.json、realtime_service.json、
+│                                        student-atomicity-early/atomic.json、
+│                                        optional-daily-recompute.json 及 identity 旁证
+└── screenshots/                         step-01..16 共 16 张命令行过程截图
 ```
 
 评分截图（`evidence-*.png`）统一放在各实验的 `evidence/` 下，命令行过程截图（`step-*.png`）统一放在 `screenshots/` 下。
@@ -106,6 +116,58 @@ lab03/                                   实验 03 分布式批处理与性能�
 | 结果一致 | true | true |
 
 任务数相差约 6 倍，耗时只差约 1%。说明任务数不是性能指标本身；显式 Shuffle 得到的是「按键分区」，不 Shuffle 得到的是「按行均分」，后者看着均匀但每个分区混着三种服务。
+
+## 实验 04 摘要
+
+**前置输入**：复用实验 02 的 `data/silver/events.parquet`，20,000 行，Silver 哈希 `516b3d78…34dc`。
+
+**分阶段结果**（主实验 run_id `eb5ee566e949`）：
+
+| 阶段 | 新增 | 可见总行数 | 检查点 |
+|---|---:|---:|---:|
+| 初始微批完成 | 20000 | 20000 | 20000 |
+| 重放前 100 条 | 0 | 20000 | 20000 |
+| 提交前失败并回滚 | 0 | 20000 | 20000 |
+| 关闭连接后恢复 | 1 | 20001 | 20001 |
+| 接受晚到事件 | 1 | **20002** | **20002** |
+
+数据库摘要 `45364a03…80ddb`，统计摘要 `d9d4eb24…466c`。只读核验 `matches_gold` 为 true。
+
+**三种行数必须区分**：原始 JSONL 20,102 行（含 100 条重复 + 2 条非法）→ 实验 02 清洗后 20,000 条合法唯一 → 本章新增 `increment-new` 与 `increment-late` 两个新 ID → 20,002。
+
+**四状态手算**：
+
+| 场景 | 可见事件数 | 检查点 | 重放 |
+|---|---:|---:|---|
+| 同事务成功提交 | 4 | 4 | 不需要 |
+| 提交前异常并回滚 | 3 | 3 | 整批重放 |
+| 数据先提交、检查点未更新 | 4 | 3 | 重放靠去重兜住 |
+| 检查点先提交、数据未写入 | 3 | 4 | **无法修复，永久丢失** |
+
+后两个方向不对等：数据先落地能靠主键去重补救，进度先落地则重放根本不会发生。
+
+**练习 A（修复提前提交）**：修改前 `atomic_contract_passed=false`、`rows_after_failure=1`、`offset_after_failure=0`；把 `COMMIT_EARLY` 改为 `False` 后 `atomic_contract_passed=true`、`rows_after_failure=0`、`final_rows=1`。diff 只有一行。
+
+**选做：按日汇总与晚到重算**
+
+晚到事件 `increment-late`（2026-02-28T23:59:00，assistant，input 1538 / output 291）落在主数据 3 月 1 日与 3 月 2 日之外，因此它新增了 `2026-02-28|assistant` 一个分组（1 条请求），既有日期分组计数完全不变。总请求数 20001 → 20002。按 `(day, service)` 缓存时需失效的键为 `2026-02-28|assistant`。
+
+若晚到事件落在已有日期内，则会改写那一天的计数（例如 `2026-03-01|assistant` 由 12142 变 12143），这才是真正的历史改写；全历史按服务汇总看不出这个差别。
+
+**语义边界**：注入的是受控 Python 异常，在 `commit()` 之前抛出并 rollback；没有断电、没有杀进程、没有网络分区。效果范围是单 SQLite 数据库内的事务提交与事件 ID 去重，不能表述为 Kafka exactly-once。本章未实现 watermark。
+
+## 实验 04 运行证据索引
+
+| stage | run_id | 说明 |
+|---|---|---|
+| start | `9735e149cafd4a17992c615fb20a58bb` | 身份登记 |
+| verify | `ebd1727639f94c099a29c2006944931a` | 主实验全部阶段（第一次） |
+| verify | `5587f4aa7c424c86b74f4b50216f15a8` | 主实验全部阶段（第二次） |
+| inspect_state | `3a53f15664204358ad79f583b259c68b` | 只读检查数据库 |
+| student_atomicity | `c71769aa4ec24dfe894ab4adce69a536` | 练习 A 修复前（失败） |
+| student_atomicity | `571618fbecab4b8589c6f2a0c9fa4bee` | 练习 A 修复后（通过） |
+| optional_daily_recompute | `1a41c52df1a54b0ea24341d148b58787` | 选做按日重算 |
+| final | `aab839ba415a4bd0b7a3ec8e7fe4dc05` | 最终身份登记 |
 
 ## 实验 03 运行证据索引
 

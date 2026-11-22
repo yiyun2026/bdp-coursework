@@ -1,0 +1,69 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "04",
+    "run_id": "5587f4aa7c424c86b74f4b50216f15a8",
+    "captured_at": "2026-11-22T01:32:22.481407+00:00",
+    "stage": "verify"
+  },
+  "result": {
+    "run_id": "c22a69acc29a",
+    "database": "E:\\Desktop\\2410311308_龚治榕_云计算实验\\BDP\\data\\state\\runs\\c22a69acc29a\\events.sqlite",
+    "source_sha256": "516b3d78aab91c1487d9a24979eaef514c5acb7309d0d82a6688a762836634dc",
+    "database_sha256": "45364a0367f51b83426c46024b5879f49d275e07d9dcb0ce74301d421ef80ddb",
+    "stats_sha256": "d9d4eb24264819b20d5e64a86138b075df3efb0664a677c7a507e9b6d9f5466c",
+    "final_offset": 20002,
+    "source_rows": 20000,
+    "demo_event_ids": {
+      "recovered": "increment-new",
+      "late": "increment-late"
+    },
+    "initial_inserted": 20000,
+    "duplicate_inserted": 0,
+    "failure_injected": true,
+    "rows_after_failure": 20000,
+    "offset_before": 20000,
+    "offset_after_failure": 20000,
+    "recovered_inserted": 1,
+    "late_inserted": 1,
+    "final_rows": 20002,
+    "late_policy": "accept and recompute historical aggregate; no watermark implemented",
+    "aggregate": [
+      {
+        "service": "assistant",
+        "requests": 14009,
+        "input_tokens": 12633388,
+        "output_tokens": 4310320
+      },
+      {
+        "service": "batch",
+        "requests": 2023,
+        "input_tokens": 1816567,
+        "output_tokens": 616515
+      },
+      {
+        "service": "search",
+        "requests": 3970,
+        "input_tokens": 3568992,
+        "output_tokens": 1219714
+      }
+    ],
+    "semantics": "single-database transactional effect with event_id deduplication; not global exactly-once"
+  },
+  "artifacts": [
+    {
+      "file": "outputs/lab04/replay.json",
+      "sha256": "016de70ebefdb01af7011ddb21ad223b049ca63b746337512208f2bdac457183",
+      "_evidence": {
+        "schema_version": 1,
+        "student_id": "2410311308",
+        "experiment_id": "04",
+        "run_id": "5587f4aa7c424c86b74f4b50216f15a8",
+        "captured_at": "2026-11-22T01:32:22.481407+00:00",
+        "stage": "replay"
+      }
+    }
+  ]
+}

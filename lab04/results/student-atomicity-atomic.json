@@ -1,0 +1,16 @@
+{
+  "commit_early": false,
+  "rows_after_failure": 0,
+  "offset_after_failure": 0,
+  "atomic_contract_passed": true,
+  "final_rows": 1,
+  "final_offset": 1,
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "04",
+    "run_id": "571618fbecab4b8589c6f2a0c9fa4bee",
+    "captured_at": "2026-11-22T01:15:28.450538+00:00",
+    "stage": "student-atomicity-atomic"
+  }
+}
