@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "93ac546453944da3ab77667676e4fa44",
+    "captured_at": "2026-11-24T03:41:02.438887+00:00",
+    "stage": "probe-query-2"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.intelligence import search; q='额度用光了之后会怎么处理？'; print([(h['doc_id'],round(h['score'],5)) for h in search(q,method='tfidf')])"
+  ],
+  "exit_code": 0,
+  "stdout": "[('queue', 0.0855), ('stream', 0.08367), ('upload', 0.08181)]\n",
+  "stderr": ""
+}

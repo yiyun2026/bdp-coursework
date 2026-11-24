@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "1df11d5c8d6644fb9ad89776f1005c1a",
+    "captured_at": "2026-11-24T03:27:12.529524+00:00",
+    "stage": "probe-04"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.intelligence import terms; print(terms('算力配额 CPU event_id'))"
+  ],
+  "exit_code": 0,
+  "stdout": "['算力', '力配', '配额', 'cpu', 'event_id']\n",
+  "stderr": ""
+}

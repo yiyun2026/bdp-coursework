@@ -45,6 +45,14 @@ lab04/                                   实验 04 增量事件处理与故障�
 │                                        student-atomicity-early/atomic.json、
 │                                        optional-daily-recompute.json 及 identity 旁证
 └── screenshots/                         step-01..16 共 16 张命令行过程截图
+
+lab05/                                   实验 05 规则文档整理与可解释检索
+├── evidence/                            全部成功运行的 JSON 与同名 HTML 成对；
+│                                        另含 evidence-01..19 共 19 张评分截图
+├── code/                                evidence_probe_01/02、opt_methods、opt_rrf、opt_rrf_zero
+├── changes/                             intelligence_before.py 与 intelligence_changed.py
+└── results/                             retrieval.json、baseline_lexical.json、
+                                         optional_methods.json、knowledge.manifest.json
 ```
 
 评分截图（`evidence-*.png`）统一放在各实验的 `evidence/` 下，命令行过程截图（`step-*.png`）统一放在 `screenshots/` 下。
@@ -155,6 +163,72 @@ lab04/                                   实验 04 增量事件处理与故障�
 若晚到事件落在已有日期内，则会改写那一天的计数（例如 `2026-03-01|assistant` 由 12142 变 12143），这才是真正的历史改写；全历史按服务汇总看不出这个差别。
 
 **语义边界**：注入的是受控 Python 异常，在 `commit()` 之前抛出并 rollback；没有断电、没有杀进程、没有网络分区。效果范围是单 SQLite 数据库内的事务提交与事件 ID 去重，不能表述为 Kafka exactly-once。本章未实现 watermark。
+
+## 实验 05 摘要
+
+**路径选择**：关键词检索基础路径（TF-IDF），未使用 BGE 语义模型。
+
+**版本与权限**：十六条规则记录，quota 的 v1 与 v2 合并为一条，另有撤回与隔离各删除一条，16 − 1 − 1 − 1 = 13 条有效文档。片段数同为 13，因为每篇正文都短于 160 字符窗口。
+
+| 项目 | 结果 |
+|---|---|
+| source_rows / active_documents / chunks | 16 / 13 / 13 |
+| index_version | `e6a6b9a795a122df0ffa6598e7e4a1bd7de93ab3a08c29f1f0dfb50f6c69c5eb` |
+| data_version | `386bb12fb56fb2ed0e7e503fb640b73a497ebc04f72a31a152aa82cee0f5b47b` |
+| 词法模型 | `character-bigram-tfidf`，revision `coursekit-v1` |
+
+**关键改动：未知可见性失效关闭**
+
+原逻辑 `role == "internal" or visibility == "public"` 对 internal 角色短路放行，未知标签会被默认为可见。改为先过白名单 `{public, internal}` 再看角色，未知值对两种角色都不可见。
+
+三项验证（run_id `26314b02`，exit_code 0）：
+
+| 检查 | 结果 |
+|---|---|
+| public 查缓存键 | 首位 cache |
+| internal 查内部维护窗口 | 首位 maintenance |
+| maintenance 改为 partner 后 internal 查 | maintenance 消失 |
+
+**故障恢复**（run_id `b8a69238`）：源文件追加空行后旧索引拒绝服务，输出 `EXPECTED_FAILURE`，重建后 `version_changed = True`。
+
+**两条自拟查询**
+
+| 查询 | 首位 | 结论 |
+|---|---|---|
+| 用户每周的 CPU 推理配额是多少分钟 | quota 0.53096 | 命中，原词一致 |
+| 额度用光了之后会怎么处理 | queue 0.0855 | 漏检，额度与配额、用光与超出在字符二元组层面无重合 |
+
+**选做：三种检索方法对照**
+
+| 方法 | 首位 | 分数 | 含义 |
+|---|---|---:|---|
+| TF-IDF | quota | 0.53096 | 归一化余弦，0 到 1 |
+| BM25 | quota | 16.85514 | 无上界词法打分 |
+| hybrid | quota | 0.03279 | RRF 名次倒数 |
+
+RRF 手算与程序逐位一致，cache 为 1/61 + 1/61 = 0.032787。零分验证用无关查询「今天天气怎么样」，TF-IDF 分数全为 0，hybrid 仍有正数，证明 RRF 分数不能当作相关性判据。
+
+## 实验 05 运行证据索引
+
+| stage | run_id | 说明 |
+|---|---|---|
+| start | `4da109e433c3490d833f65080771e545` | 身份登记 |
+| probe-01 | `3bbf2bc58e6848608cc386e10101792a` | 解释器与前置文件 |
+| probe-02 | `cfa9f88d611d4c02bbf09e4a1dd8ea9b` | 版本选择 16 减到 13 |
+| retrieval | `675d95aa47a5428c9a34e7d7a94fe022` | 词法索引与检索基线 |
+| probe-03 | `b448fc5aa98e4b4a8b8a278f9bed77bc` | 片段数与偏移 |
+| probe-04 | `1df11d5c8d6644fb9ad89776f1005c1a` | 分词规则 |
+| probe-05 | `f7baef0b99474d3cb934ef9f0dd5bffa` | TF-IDF 检索 |
+| probe-06 | `ce25492ddbe648ff8124ae6688779009` | 权限过滤改动前 |
+| probe-block-01 | `26314b02109a4547bde3d826a77783c6` | 三项验证 |
+| probe-block-02 | `b8a69238c4814176847e1313717614be` | 故障注入与重建 |
+| probe-query-1 | `6724bded40f94a02b33c0b8455bcaf12` | 查询一命中 |
+| probe-query-2 | `93ac546453944da3ab77667676e4fa44` | 查询二漏检 |
+| opt-bm25 | `92c9c6a2379848d1b7c7bc34a11cab23` | BM25 单独验证 |
+| opt-methods | `30c8e680c4604590822f2be59c183588` | 三方法对照 |
+| opt-rrf | `91f991cef56040d497c72bd46b038d6a` | RRF 手算对照 |
+| opt-rrf-zero | `ce8bf80e2cdb4023aa305160e13aa373` | RRF 零分验证 |
+| final | `d01163d49e3549548d153e5afd6969b5` | 最终身份登记 |
 
 ## 实验 04 运行证据索引
 

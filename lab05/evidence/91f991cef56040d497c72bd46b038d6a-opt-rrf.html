@@ -1,0 +1,20 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>学号 2410311308 · 实验/项目 05</title><style>body{margin:0;font:16px/1.6 sans-serif;background:#f4f6f8;color:#142235}header{position:sticky;top:0;background:#142e50;color:white;padding:18px 24px;overflow-wrap:anywhere;z-index:2}header strong{font-size:24px}header small{display:block}main{padding:20px 24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:20px;border:1px solid #cbd5e1}@media print{header{position:fixed;top:0}main{padding-top:100px}}</style><header><strong>学号 2410311308 · 实验/项目 05</strong><small>run_id: 91f991cef56040d497c72bd46b038d6a · 2026-11-24T04:15:51.815501+00:00 · opt-rrf</small></header><main><p>本页展示本次运行的原始记录。截图必须完整保留顶部学号、编号、run_id和相关结果。该标识用于证据关联；原创性还须结合代码差异和现场验收。</p><pre>{
+  &quot;kind&quot;: &quot;coursekit.run&quot;,
+  &quot;_evidence&quot;: {
+    &quot;schema_version&quot;: 1,
+    &quot;student_id&quot;: &quot;2410311308&quot;,
+    &quot;experiment_id&quot;: &quot;05&quot;,
+    &quot;run_id&quot;: &quot;91f991cef56040d497c72bd46b038d6a&quot;,
+    &quot;captured_at&quot;: &quot;2026-11-24T04:15:51.815501+00:00&quot;,
+    &quot;stage&quot;: &quot;opt-rrf&quot;
+  },
+  &quot;result&quot;: null,
+  &quot;artifacts&quot;: [],
+  &quot;command&quot;: [
+    &quot;./.venv/Scripts/python.exe&quot;,
+    &quot;./submissions/lab05/opt_rrf.py&quot;
+  ],
+  &quot;exit_code&quot;: 0,
+  &quot;stdout&quot;: &quot;TF-IDF 排名: [(&#x27;cache@v1:0-69&#x27;, 1), (&#x27;upload@v1:0-70&#x27;, 2), (&#x27;access@v1:0-84&#x27;, 3)]\nBM25   排名: [(&#x27;cache@v1:0-69&#x27;, 1), (&#x27;upload@v1:0-70&#x27;, 2), (&#x27;access@v1:0-84&#x27;, 3)]\n\n手算 RRF:\n  cache@v1:0-69: 1/(60+1)=0.016393 + 0.016393 = 0.032787\n  upload@v1:0-70: 1/(60+2)=0.016129 + 0.016129 = 0.032258\n  access@v1:0-84: 1/(60+3)=0.015873 + 0.015873 = 0.031746\n\n程序 hybrid: [(&#x27;cache@v1:0-69&#x27;, 0.032787), (&#x27;upload@v1:0-70&#x27;, 0.032258), (&#x27;access@v1:0-84&#x27;, 0.031746)]\n&quot;,
+  &quot;stderr&quot;: &quot;&quot;
+}</pre></main></html>

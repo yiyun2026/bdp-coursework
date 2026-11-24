@@ -1,0 +1,20 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "b8a69238c4814176847e1313717614be",
+    "captured_at": "2026-11-24T04:11:15.585931+00:00",
+    "stage": "probe-block-02"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    "./.venv/Scripts/python.exe",
+    "./submissions/lab05/evidence_probe_02.py"
+  ],
+  "exit_code": 0,
+  "stdout": "EXPECTED_FAILURE 源文档已变化，旧索引拒绝服务；重新运行 lab05\nversion_changed= True\n",
+  "stderr": ""
+}

@@ -1,0 +1,20 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "30c8e680c4604590822f2be59c183588",
+    "captured_at": "2026-11-24T04:15:51.357295+00:00",
+    "stage": "opt-methods"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    "./.venv/Scripts/python.exe",
+    "./submissions/lab05/opt_methods.py"
+  ],
+  "exit_code": 0,
+  "stdout": "问题: 用户每周的 CPU 推理配额是多少分钟？\n\ntfidf    [('quota', 0.53096), ('cache', 0.08019), ('budget', 0.07274), ('retention', 0.02915), ('access', 0.0)]\nbm25     [('quota', 16.85514), ('budget', 2.2352), ('cache', 2.03191), ('retention', 1.3094), ('access', 0.0)]\nhybrid   [('quota', 0.03279), ('budget', 0.032), ('cache', 0.032), ('retention', 0.03125), ('access', 0.03077)]\n",
+  "stderr": ""
+}

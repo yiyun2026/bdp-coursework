@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "cfa9f88d611d4c02bbf09e4a1dd8ea9b",
+    "captured_at": "2026-11-24T03:18:54.180952+00:00",
+    "stage": "probe-02"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.intelligence import SOURCE,read_jsonl,latest_documents; a=read_jsonl(SOURCE); b=latest_documents(a); print('raw=',len(a),'active=',len(b)); print([(x['doc_id'],x['version'],x['visibility']) for x in b])"
+  ],
+  "exit_code": 0,
+  "stdout": "raw= 16 active= 13\n[('access', 1, 'public'), ('budget', 1, 'public'), ('cache', 1, 'public'), ('citation', 1, 'public'), ('incident', 1, 'internal'), ('maintenance', 1, 'internal'), ('queue', 1, 'public'), ('quota', 2, 'public'), ('release', 1, 'public'), ('retention', 1, 'public'), ('storage', 1, 'public'), ('stream', 1, 'public'), ('upload', 1, 'public')]\n",
+  "stderr": ""
+}

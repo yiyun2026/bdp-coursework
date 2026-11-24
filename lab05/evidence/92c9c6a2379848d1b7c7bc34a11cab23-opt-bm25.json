@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "92c9c6a2379848d1b7c7bc34a11cab23",
+    "captured_at": "2026-11-24T04:02:41.115647+00:00",
+    "stage": "opt-bm25"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.intelligence import search; q='缓存键应包含哪些信息？'; print('BM25:', [(h['doc_id'],round(h['score'],5)) for h in search(q,method='bm25')])"
+  ],
+  "exit_code": 0,
+  "stdout": "BM25: [('cache', 7.07502), ('upload', 4.38725), ('access', 0.0)]\n",
+  "stderr": ""
+}

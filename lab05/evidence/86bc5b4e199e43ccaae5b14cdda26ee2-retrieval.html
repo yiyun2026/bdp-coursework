@@ -1,0 +1,199 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>学号 2410311308 · 实验/项目 05</title><style>body{margin:0;font:16px/1.6 sans-serif;background:#f4f6f8;color:#142235}header{position:sticky;top:0;background:#142e50;color:white;padding:18px 24px;overflow-wrap:anywhere;z-index:2}header strong{font-size:24px}header small{display:block}main{padding:20px 24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:white;padding:20px;border:1px solid #cbd5e1}@media print{header{position:fixed;top:0}main{padding-top:100px}}</style><header><strong>学号 2410311308 · 实验/项目 05</strong><small>run_id: 86bc5b4e199e43ccaae5b14cdda26ee2 · 2026-11-24T03:33:23.654533+00:00 · retrieval</small></header><main><p>本页展示本次运行的原始记录。截图必须完整保留顶部学号、编号、run_id和相关结果。该标识用于证据关联；原创性还须结合代码差异和现场验收。</p><pre>{
+  &quot;kind&quot;: &quot;coursekit.run&quot;,
+  &quot;_evidence&quot;: {
+    &quot;schema_version&quot;: 1,
+    &quot;student_id&quot;: &quot;2410311308&quot;,
+    &quot;experiment_id&quot;: &quot;05&quot;,
+    &quot;run_id&quot;: &quot;86bc5b4e199e43ccaae5b14cdda26ee2&quot;,
+    &quot;captured_at&quot;: &quot;2026-11-24T03:33:23.654533+00:00&quot;,
+    &quot;stage&quot;: &quot;retrieval&quot;
+  },
+  &quot;result&quot;: {
+    &quot;mode&quot;: &quot;lexical&quot;,
+    &quot;model_id&quot;: &quot;character-bigram-tfidf&quot;,
+    &quot;model_revision&quot;: &quot;coursekit-v1&quot;,
+    &quot;source_rows&quot;: 16,
+    &quot;active_documents&quot;: 13,
+    &quot;chunks&quot;: 13,
+    &quot;index_version&quot;: &quot;e6a6b9a795a122df0ffa6598e7e4a1bd7de93ab3a08c29f1f0dfb50f6c69c5eb&quot;,
+    &quot;data_version&quot;: &quot;386bb12fb56fb2ed0e7e503fb640b73a497ebc04f72a31a152aa82cee0f5b47b&quot;,
+    &quot;comparison&quot;: {
+      &quot;tfidf&quot;: [
+        {
+          &quot;doc_id&quot;: &quot;cache&quot;,
+          &quot;title&quot;: &quot;回答缓存规则&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;回答缓存规则：缓存键必须包含规范化问题、用户权限、数据版本、索引版本和生成器。文档更新后旧缓存失效。公开用户的请求不得命中内部用户的缓存。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 69,
+          &quot;chunk_id&quot;: &quot;cache@v1:0-69&quot;,
+          &quot;score&quot;: 0.3329054385748028,
+          &quot;lexical_cosine&quot;: 0.3329054385748028,
+          &quot;primary_score&quot;: 0.3329054385748028,
+          &quot;bm25_score&quot;: 7.075022214901775
+        },
+        {
+          &quot;doc_id&quot;: &quot;upload&quot;,
+          &quot;title&quot;: &quot;资料上传与个人信息&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;资料上传要求：仅上传获得授权的教学资料。上传前删除姓名、手机号码、身份证号等个人信息。原始资料保留30天，删除请求须同时处理索引副本与缓存。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 70,
+          &quot;chunk_id&quot;: &quot;upload@v1:0-70&quot;,
+          &quot;score&quot;: 0.15169594705668343,
+          &quot;lexical_cosine&quot;: 0.15169594705668343,
+          &quot;primary_score&quot;: 0.15169594705668343,
+          &quot;bm25_score&quot;: 4.387245301512567
+        },
+        {
+          &quot;doc_id&quot;: &quot;access&quot;,
+          &quot;title&quot;: &quot;数据访问分级&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;数据访问分级包括public公开和internal内部。先过滤调用者无权读取的资料，再检索和生成；实际生产环境必须从服务端认证结果取得身份，不能信任客户端自报role。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 84,
+          &quot;chunk_id&quot;: &quot;access@v1:0-84&quot;,
+          &quot;score&quot;: 0.0,
+          &quot;lexical_cosine&quot;: 0.0,
+          &quot;primary_score&quot;: 0.0,
+          &quot;bm25_score&quot;: 0.0
+        }
+      ],
+      &quot;bm25&quot;: [
+        {
+          &quot;doc_id&quot;: &quot;cache&quot;,
+          &quot;title&quot;: &quot;回答缓存规则&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;回答缓存规则：缓存键必须包含规范化问题、用户权限、数据版本、索引版本和生成器。文档更新后旧缓存失效。公开用户的请求不得命中内部用户的缓存。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 69,
+          &quot;chunk_id&quot;: &quot;cache@v1:0-69&quot;,
+          &quot;score&quot;: 7.075022214901775,
+          &quot;lexical_cosine&quot;: 0.3329054385748028,
+          &quot;primary_score&quot;: 0.3329054385748028,
+          &quot;bm25_score&quot;: 7.075022214901775
+        },
+        {
+          &quot;doc_id&quot;: &quot;upload&quot;,
+          &quot;title&quot;: &quot;资料上传与个人信息&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;资料上传要求：仅上传获得授权的教学资料。上传前删除姓名、手机号码、身份证号等个人信息。原始资料保留30天，删除请求须同时处理索引副本与缓存。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 70,
+          &quot;chunk_id&quot;: &quot;upload@v1:0-70&quot;,
+          &quot;score&quot;: 4.387245301512567,
+          &quot;lexical_cosine&quot;: 0.15169594705668343,
+          &quot;primary_score&quot;: 0.15169594705668343,
+          &quot;bm25_score&quot;: 4.387245301512567
+        },
+        {
+          &quot;doc_id&quot;: &quot;access&quot;,
+          &quot;title&quot;: &quot;数据访问分级&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;数据访问分级包括public公开和internal内部。先过滤调用者无权读取的资料，再检索和生成；实际生产环境必须从服务端认证结果取得身份，不能信任客户端自报role。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 84,
+          &quot;chunk_id&quot;: &quot;access@v1:0-84&quot;,
+          &quot;score&quot;: 0.0,
+          &quot;lexical_cosine&quot;: 0.0,
+          &quot;primary_score&quot;: 0.0,
+          &quot;bm25_score&quot;: 0.0
+        }
+      ],
+      &quot;hybrid&quot;: [
+        {
+          &quot;doc_id&quot;: &quot;cache&quot;,
+          &quot;title&quot;: &quot;回答缓存规则&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;回答缓存规则：缓存键必须包含规范化问题、用户权限、数据版本、索引版本和生成器。文档更新后旧缓存失效。公开用户的请求不得命中内部用户的缓存。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 69,
+          &quot;chunk_id&quot;: &quot;cache@v1:0-69&quot;,
+          &quot;score&quot;: 0.03278688524590164,
+          &quot;lexical_cosine&quot;: 0.3329054385748028,
+          &quot;primary_score&quot;: 0.3329054385748028,
+          &quot;bm25_score&quot;: 7.075022214901775
+        },
+        {
+          &quot;doc_id&quot;: &quot;upload&quot;,
+          &quot;title&quot;: &quot;资料上传与个人信息&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;资料上传要求：仅上传获得授权的教学资料。上传前删除姓名、手机号码、身份证号等个人信息。原始资料保留30天，删除请求须同时处理索引副本与缓存。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 70,
+          &quot;chunk_id&quot;: &quot;upload@v1:0-70&quot;,
+          &quot;score&quot;: 0.03225806451612903,
+          &quot;lexical_cosine&quot;: 0.15169594705668343,
+          &quot;primary_score&quot;: 0.15169594705668343,
+          &quot;bm25_score&quot;: 4.387245301512567
+        },
+        {
+          &quot;doc_id&quot;: &quot;access&quot;,
+          &quot;title&quot;: &quot;数据访问分级&quot;,
+          &quot;version&quot;: 1,
+          &quot;visibility&quot;: &quot;public&quot;,
+          &quot;text&quot;: &quot;数据访问分级包括public公开和internal内部。先过滤调用者无权读取的资料，再检索和生成；实际生产环境必须从服务端认证结果取得身份，不能信任客户端自报role。&quot;,
+          &quot;updated_at&quot;: &quot;2026-09-01T00:00:00Z&quot;,
+          &quot;status&quot;: &quot;approved&quot;,
+          &quot;start&quot;: 0,
+          &quot;end&quot;: 84,
+          &quot;chunk_id&quot;: &quot;access@v1:0-84&quot;,
+          &quot;score&quot;: 0.031746031746031744,
+          &quot;lexical_cosine&quot;: 0.0,
+          &quot;primary_score&quot;: 0.0,
+          &quot;bm25_score&quot;: 0.0
+        }
+      ]
+    }
+  },
+  &quot;artifacts&quot;: [
+    {
+      &quot;file&quot;: &quot;outputs/lab05/retrieval.json&quot;,
+      &quot;sha256&quot;: &quot;df0de7247aeb6c3ca756351215805a4ecee322480a6de5e75bcc2cc8b3f2e79f&quot;,
+      &quot;_evidence&quot;: {
+        &quot;schema_version&quot;: 1,
+        &quot;student_id&quot;: &quot;2410311308&quot;,
+        &quot;experiment_id&quot;: &quot;05&quot;,
+        &quot;run_id&quot;: &quot;86bc5b4e199e43ccaae5b14cdda26ee2&quot;,
+        &quot;captured_at&quot;: &quot;2026-11-24T03:33:23.654533+00:00&quot;,
+        &quot;stage&quot;: &quot;retrieval&quot;
+      }
+    },
+    {
+      &quot;file&quot;: &quot;outputs/lab05/retrieval_lexical.json&quot;,
+      &quot;sha256&quot;: &quot;43dbad5a9dc80e049086c0e08a8ec1b362f9783739e91f870c6872e0a0256d9f&quot;,
+      &quot;_evidence&quot;: {
+        &quot;schema_version&quot;: 1,
+        &quot;student_id&quot;: &quot;2410311308&quot;,
+        &quot;experiment_id&quot;: &quot;05&quot;,
+        &quot;run_id&quot;: &quot;86bc5b4e199e43ccaae5b14cdda26ee2&quot;,
+        &quot;captured_at&quot;: &quot;2026-11-24T03:33:23.654533+00:00&quot;,
+        &quot;stage&quot;: &quot;retrieval_lexical&quot;
+      }
+    }
+  ]
+}</pre></main></html>

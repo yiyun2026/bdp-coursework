@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "3bbf2bc58e6848608cc386e10101792a",
+    "captured_at": "2026-11-24T03:13:53.592961+00:00",
+    "stage": "probe-01"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "import sys; print(sys.version); print(sys.executable)"
+  ],
+  "exit_code": 0,
+  "stdout": "3.12.10 (tags/v3.12.10:0cc8128, Apr  8 2025, 12:21:36) [MSC v.1943 64 bit (AMD64)]\nE:\\Desktop\\2410311308_龚治榕_云计算实验\\BDP\\.venv\\Scripts\\python.exe\n",
+  "stderr": ""
+}

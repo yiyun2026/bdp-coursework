@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "b448fc5aa98e4b4a8b8a278f9bed77bc",
+    "captured_at": "2026-11-24T03:25:47.407130+00:00",
+    "stage": "probe-03"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.intelligence import load_index; i=load_index(); print('chunks=',len(i['chunks'])); print([(x['chunk_id'],x['start'],x['end']) for x in i['chunks'][:4]])"
+  ],
+  "exit_code": 0,
+  "stdout": "chunks= 13\n[('access@v1:0-84', 0, 84), ('budget@v1:0-78', 0, 78), ('cache@v1:0-69', 0, 69), ('citation@v1:0-72', 0, 72)]\n",
+  "stderr": ""
+}

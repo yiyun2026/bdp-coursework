@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "f7baef0b99474d3cb934ef9f0dd5bffa",
+    "captured_at": "2026-11-24T03:27:17.304287+00:00",
+    "stage": "probe-05"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.intelligence import search; q='缓存键应包含哪些信息？'; print([(h['doc_id'],round(h['score'],5)) for h in search(q,method='tfidf')])"
+  ],
+  "exit_code": 0,
+  "stdout": "[('cache', 0.33291), ('upload', 0.1517), ('access', 0.0)]\n",
+  "stderr": ""
+}

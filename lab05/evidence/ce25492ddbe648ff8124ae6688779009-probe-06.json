@@ -1,0 +1,21 @@
+{
+  "kind": "coursekit.run",
+  "_evidence": {
+    "schema_version": 1,
+    "student_id": "2410311308",
+    "experiment_id": "05",
+    "run_id": "ce25492ddbe648ff8124ae6688779009",
+    "captured_at": "2026-11-24T03:29:38.239097+00:00",
+    "stage": "probe-06"
+  },
+  "result": null,
+  "artifacts": [],
+  "command": [
+    ".\\.venv\\Scripts\\python.exe",
+    "-c",
+    "from coursekit.intelligence import search; print('public',[(h['doc_id'],h['visibility']) for h in search('内部维护窗口',role='public',k=20)]); print('internal',[(h['doc_id'],h['visibility']) for h in search('内部维护窗口',role='internal',k=3)])"
+  ],
+  "exit_code": 0,
+  "stdout": "public [('access', 'public'), ('cache', 'public'), ('budget', 'public'), ('citation', 'public'), ('queue', 'public'), ('quota', 'public'), ('release', 'public'), ('retention', 'public'), ('storage', 'public'), ('stream', 'public'), ('upload', 'public')]\ninternal [('maintenance', 'internal'), ('incident', 'internal'), ('access', 'public')]\n",
+  "stderr": ""
+}
